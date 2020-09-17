@@ -37,25 +37,25 @@ public class UserController {
 
     @GetMapping("/{id}")
     public @ResponseBody
-    Optional<User> findById(@PathVariable("id") long id) {
+    Optional<User> findById(@PathVariable("id") Integer id) {
         return userService.findById(id);
     }
-
+/*
     @GetMapping("/{id}")
-    public boolean existsById(@PathVariable("id") long id) {
+    public boolean existsById(@PathVariable("id") Long id) {
         return userService.existsById(id);
-    }
-
+    }*/
+/*
     @GetMapping
     public @ResponseBody List<User> findAll() {
         List<User> list = new ArrayList<>();
         userService.findAll();
         return list;
-    }
-    @GetMapping("/{id}")
+    }*/
+   /* @GetMapping("/{id}")
     public @ResponseBody List<User> findAllById(List<Long> list) {
         return userService.findAllById(list);
-    }
+    }*/
 
     @DeleteMapping("/{id}")
     public void deleteById(long id) {
