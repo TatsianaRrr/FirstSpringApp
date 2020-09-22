@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.bean.User;
 import com.example.demo.dao.UserDaoI;
+import com.example.demo.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,16 @@ public class UserService {
 
     public void deleteAll(List<User> list) {
         userDaoI.deleteAll(list);
+    }
+
+    public User update(long id, User user) {
+        Optional<User> userDaoIById = userDaoI.findById(id);
+        if (userDaoIById.isPresent()) {
+            user.setIduser(Math.toIntExact(id));
+            return userDaoI.save(user);
+        } else {
+            throw new UserException("Can't find user with id: " + id);
+        }
     }
 }
 
