@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.bean.User;
+import com.example.demo.exception.UserException;
 import com.example.demo.service.UserService;
+import jdk.jshell.spi.ExecutionControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/user")
@@ -36,10 +40,16 @@ public class UserController {
         return userService.saveAll(users);
     }*/
 
-    @GetMapping("/{id}")
+    @GetMapping("/{userId}")
     public @ResponseBody
-    Optional<User> findById(@PathVariable("id") Integer id) {
-        return userService.findById(id);
+    Optional<User> findById(@PathVariable("userId") Integer id) {
+        return Optional.ofNullable(userService.findById(id).orElseThrow(UserException::new));
+    }
+
+    @PutMapping(value = "/update/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public @ResponseBody User update(@PathVariable("id") Long id, @RequestBody User user) {
+        LOGGER.debug("Updating user: {}", user);
+        return userService.update(id, user);
     }
 /*
     @GetMapping("/{id}")
@@ -58,7 +68,7 @@ public class UserController {
         return userService.findAllById(list);
     }*/
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
@@ -69,7 +79,7 @@ public class UserController {
     }
 
     @DeleteMapping
-    public void deleteAll(List<User> list) {
+    public void deleteAll(@RequestParam List<User> list) {
         userService.deleteAll(list);
     }
 }
