@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 @Entity
 @Table(name = "USER")
@@ -30,6 +30,11 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
+
+
    /* @Enumerated(EnumType.ORDINAL)
     @Column(name = "userRole")
     private UserRole userRole;
@@ -39,6 +44,14 @@ public class User {
         USER,
         ADMIN;
     }*/
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public int getIduser() {
         return iduser;
