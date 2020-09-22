@@ -15,12 +15,14 @@ import java.util.Optional;
 @RequestMapping("/user")
 public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user/all")
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     List<User> getAll() {
+        LOGGER.info("all users");
         return userService.getAll();
     }
 
@@ -29,12 +31,12 @@ public class UserController {
         return userService.save(user);
     }
 
-    public List<User> saveAll(List<User> list) {
-        userService.saveAll(list);
-        return list;
-    }
+  /*  @PostMapping(name="/save_all", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<User> saveAll(@RequestBody List<User> users) {
+        return userService.saveAll(users);
+    }*/
 
-    @GetMapping("/user/details/{id}")
+    @GetMapping("/{id}")
     public @ResponseBody
     Optional<User> findById(@PathVariable("id") Integer id) {
         return userService.findById(id);
@@ -56,7 +58,7 @@ public class UserController {
         return userService.findAllById(list);
     }*/
 
-    @DeleteMapping("/user/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
