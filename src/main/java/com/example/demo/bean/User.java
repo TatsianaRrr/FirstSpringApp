@@ -16,7 +16,7 @@ public class User {
     @Id
     @Column(name = "iduser", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int iduser;
+    private long iduser;
 
     @Column(name = "login", nullable = false)
     private String login;
@@ -30,8 +30,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders;
+  /*  @OneToMany(mappedBy = "user")
+    private List<Order> orders;*/
 
 
 
@@ -45,15 +45,15 @@ public class User {
         ADMIN;
     }*/
 
-    public List<Order> getOrders() {
+   /* public List<Order> getOrders() {
         return orders;
     }
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
+    }*/
 
-    public int getIduser() {
+    public long getIduser() {
         return iduser;
     }
 
