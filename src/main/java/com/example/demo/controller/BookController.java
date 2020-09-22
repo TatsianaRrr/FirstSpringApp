@@ -18,7 +18,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     List<Book> getAll() {
         return bookService.getAll();
@@ -34,24 +34,24 @@ public class BookController {
         return list;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{bookId}")
     public @ResponseBody
-    Optional<Book> findById(@PathVariable("id") Integer id) {
+    Optional<Book> findById(@PathVariable("bookId") Integer id) {
         return bookService.findById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteById(long id) {
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable long id) {
         bookService.deleteById(id);
     }
 
-    @DeleteMapping("/{book}")
-    public void delete(Book book) {
+    @DeleteMapping("/delete/{book}")
+    public void delete(@RequestBody Book book) {
         bookService.delete(book);
     }
 
     @DeleteMapping
-    public void deleteAll(List<Book> list) {
+    public void deleteAll(@RequestParam List<Book> list) {
         bookService.deleteAll(list);
     }
 }
