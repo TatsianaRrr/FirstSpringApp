@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.Book;
 import com.example.demo.bean.Order;
 import com.example.demo.service.OrderService;
 import org.slf4j.Logger;
@@ -19,7 +18,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     List<Order> getAll() {
         return orderService.getAll();
@@ -35,18 +34,18 @@ public class OrderController {
         return list;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{idOrder}")
     public @ResponseBody
-    Optional<Order> findById(@PathVariable("id") Integer id) {
+    Optional<Order> findById(@PathVariable("idOrder") Long id) {
         return orderService.findById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{idOrder}")
     public void deleteById(long id) {
         orderService.deleteById(id);
     }
 
-    @DeleteMapping("/{order}")
+    @DeleteMapping("/delete/{order}")
     public void delete(Order order) {
         orderService.delete(order);
     }
