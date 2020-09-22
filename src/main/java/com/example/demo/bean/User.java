@@ -112,7 +112,7 @@ public class User {
                 Objects.equals(name, user.name) &&
                 Objects.equals(email, user.email);
     }
-
+//
     @Override
     public int hashCode() {
         return Objects.hash(iduser, login, password, name, email);
