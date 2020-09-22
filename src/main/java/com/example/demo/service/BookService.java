@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.bean.Book;
+import com.example.demo.bean.User;
 import com.example.demo.dao.BookDaoI;
+import com.example.demo.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +65,15 @@ public class BookService {
 
     public void deleteAll(List<Book> list) {
         bookDaoI.deleteAll(list);
+    }
+    public Book update(long id, Book book) {
+        Optional<Book> byId = bookDaoI.findById(id);
+        if (byId.isPresent()) {
+            book.setIdbook(Math.toIntExact(id));
+            return bookDaoI.save(book);
+        } else {
+            throw new UserException("Can't find book with id: " + id);
+        }
     }
 }
 
