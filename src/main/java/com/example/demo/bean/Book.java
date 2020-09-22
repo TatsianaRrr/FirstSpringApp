@@ -10,7 +10,7 @@ public class Book {
     @Id
     @Column(name = "idbook", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idbook;
+    private long idbook;
 
     @Column(name = "title")
     private String title;
@@ -54,7 +54,7 @@ public class Book {
     @Column(name = "image")
     private String image;
 
-    @OneToMany(mappedBy = "book")
+   /* @OneToMany(mappedBy = "book")
     private List<Order> orders;
 
     public List<Order> getOrders() {
@@ -63,9 +63,9 @@ public class Book {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
+    }*/
 
-    public int getIdbook() {
+    public long getIdbook() {
         return idbook;
     }
 
