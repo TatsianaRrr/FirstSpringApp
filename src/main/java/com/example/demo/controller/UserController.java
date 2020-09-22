@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("/user/all")
     public @ResponseBody
     List<User> getAll() {
         return userService.getAll();
@@ -35,7 +34,7 @@ public class UserController {
         return list;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/details/{id}")
     public @ResponseBody
     Optional<User> findById(@PathVariable("id") Integer id) {
         return userService.findById(id);
@@ -57,13 +56,13 @@ public class UserController {
         return userService.findAllById(list);
     }*/
 
-    @DeleteMapping("/{id}")
-    public void deleteById(long id) {
+    @DeleteMapping("/user/delete/{id}")
+    public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
 
     @DeleteMapping("/{user}")
-    public void delete(User user) {
+    public void delete(@RequestBody User user) {
         userService.delete(user);
     }
 
