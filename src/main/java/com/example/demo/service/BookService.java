@@ -66,6 +66,7 @@ public class BookService {
     public void deleteAll(List<Book> list) {
         bookDaoI.deleteAll(list);
     }
+
     public Book update(long id, Book book) {
         Optional<Book> byId = bookDaoI.findById(id);
         if (byId.isPresent()) {

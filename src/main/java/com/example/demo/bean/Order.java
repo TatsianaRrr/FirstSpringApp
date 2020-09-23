@@ -1,22 +1,26 @@
 package com.example.demo.bean;
 
+import org.hibernate.annotations.GeneratorType;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "order")
 public class Order {
+
+    @Column(name = "idorder")
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+   /* @ManyToOne()
+    @JoinColumn(name = "user_iduser")
+    private User user;*/
 
     @ManyToOne()
-    @JoinColumn(name = "iduser")
-    User user;
-
-    @ManyToOne()
-    @JoinColumn(name = "idbook")
-    Book book;
+    @JoinColumn(name = "book_idbook")
+    private Book book;
 
     @Column
     private String description;
@@ -32,13 +36,13 @@ public class Order {
         this.id = id;
     }
 
-    public User getUser() {
+   /* public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
+    }*/
 
     public Book getBook() {
         return book;
@@ -56,7 +60,7 @@ public class Order {
         this.description = description;
     }
 
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -67,15 +71,18 @@ public class Order {
     @Override
     public int hashCode() {
         return Objects.hash(id, user, book, description);
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(id, order.id) && Objects.equals(book, order.book) && Objects.equals(description, order.description);
     }
 
     @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", user=" + user +
-                ", book=" + book +
-                ", description='" + description + '\'' +
-                '}';
+    public int hashCode() {
+        return Objects.hash(id, book, description);
     }
 }

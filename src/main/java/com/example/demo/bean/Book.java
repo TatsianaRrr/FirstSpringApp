@@ -1,8 +1,10 @@
 package com.example.demo.bean;
 
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+
 
 @Entity
 @Table(name = "BOOK")
@@ -18,7 +20,7 @@ public class Book {
     @Column(name = "author")
     private String author;
 
-  /*  @Column(name = "publishing_house")
+  /*  @Column(name = "publishingHouse")
     private String publishingHouse;*/
 
     @Column(name = "year")
@@ -33,13 +35,13 @@ public class Book {
     @Column(name = "isbn")
     private long isbn;
 
-  /*  @Column(name = "countOfPages")
+  /*  @Column(name = "countOgPages")
     private int countOfPages;*/
 
     @Column(name = "language")
     private String language;
 
-   /* @Column(name = "author_of_translation")
+   /* @Column(name = "authorOfTranslation")
     private String authorOfTranslation;*/
 
     @Column(name = "description")
@@ -54,11 +56,7 @@ public class Book {
     @Column(name = "image")
     private String image;
 
-   /* @OneToMany(
-            mappedBy = "book",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @OneToMany(mappedBy = "book")
     private List<Order> orders;
 
     public List<Order> getOrders() {
@@ -67,13 +65,13 @@ public class Book {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }*/
+    }
 
     public long getIdbook() {
         return idbook;
     }
 
-    public void setIdbook(int idbook) {
+    public void setIdbook(long idbook) {
         this.idbook = idbook;
     }
 
@@ -92,14 +90,6 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-
- /*   public String getPublishingHouse() {
-        return publishingHouse;
-    }
-
-    public void setPublishingHouse(String publishingHouse) {
-        this.publishingHouse = publishingHouse;
-    }*/
 
     public int getYear() {
         return year;
@@ -133,14 +123,6 @@ public class Book {
         this.isbn = isbn;
     }
 
-  /*  public int getCountOfPages() {
-        return countOfPages;
-    }
-
-    public void setCountOfPages(int countOfPages) {
-        this.countOfPages = countOfPages;
-    }*/
-
     public String getLanguage() {
         return language;
     }
@@ -148,14 +130,6 @@ public class Book {
     public void setLanguage(String language) {
         this.language = language;
     }
-
-   /* public String getAuthorOfTranslation() {
-        return authorOfTranslation;
-    }
-
-    public void setAuthorOfTranslation(String authorOfTranslation) {
-        this.authorOfTranslation = authorOfTranslation;
-    }*/
 
     public String getDescription() {
         return description;
@@ -189,6 +163,19 @@ public class Book {
         this.image = image;
     }
 
+    public Book() {
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return idbook == book.idbook && year == book.year && isbn == book.isbn && Double.compare(book.price, price) == 0 && delete == book.delete && Objects.equals(title, book.title) && Objects.equals(author, book.author) && Objects.equals(genre, book.genre) && Objects.equals(country, book.country) && Objects.equals(language, book.language) && Objects.equals(description, book.description) && Objects.equals(image, book.image) && Objects.equals(orders, book.orders);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idbook, title, author, year, genre, country, isbn, language, description, price, delete, image, orders);
+    }
 }

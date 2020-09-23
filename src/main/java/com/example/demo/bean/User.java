@@ -55,13 +55,14 @@ public class User {
         ADMIN;
     }*/
 
-
+    public User() {
+    }
 
     public long getIduser() {
         return iduser;
     }
 
-    public void setIduser(int iduser) {
+    public void setIduser(long iduser) {
         this.iduser = iduser;
     }
 
