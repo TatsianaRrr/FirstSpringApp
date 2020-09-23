@@ -54,7 +54,11 @@ public class Book {
     @Column(name = "image")
     private String image;
 
-   /* @OneToMany(mappedBy = "book")
+   /* @OneToMany(
+            mappedBy = "book",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Order> orders;
 
     public List<Order> getOrders() {
