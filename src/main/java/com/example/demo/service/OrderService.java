@@ -20,9 +20,9 @@ public class OrderService {
     private OrderDaoI orderDaoI;
 
     public List<Order> getAll() {
-        List<Order> res = new ArrayList<>();
-        orderDaoI.findAll().forEach(res::add);
-        return res;
+        List<Order> list = new ArrayList<>();
+        orderDaoI.findAll().forEach(list::add);
+        return list;
     }
 
     public Order save(Order order) {
