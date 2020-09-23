@@ -1,15 +1,11 @@
 package com.example.demo.bean;
 
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
+@Data
 @Entity
 @Table(name = "USER")
 public class User {
@@ -35,15 +31,8 @@ public class User {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<Order> orders;
+    private List<Order> orders;*/
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }*/
 
    /* @Enumerated(EnumType.ORDINAL)
     @Column(name = "userRole")
@@ -55,83 +44,6 @@ public class User {
         ADMIN;
     }*/
 
-    public User() {
-    }
 
-    public long getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(long iduser) {
-        this.iduser = iduser;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-   /* public UserRole getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
-    }*/
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return iduser == user.iduser &&
-                Objects.equals(login, user.login) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(email, user.email);
-    }
-//
-    @Override
-    public int hashCode() {
-        return Objects.hash(iduser, login, password, name, email);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "iduser=" + iduser +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
 
