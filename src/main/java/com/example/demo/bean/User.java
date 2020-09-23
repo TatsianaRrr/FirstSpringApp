@@ -30,10 +30,20 @@ public class User {
     @Column(name = "email")
     private String email;
 
-  /*  @OneToMany(mappedBy = "user")
-    private List<Order> orders;*/
+   /* @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Order> orders;
 
+    public List<Order> getOrders() {
+        return orders;
+    }
 
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }*/
 
    /* @Enumerated(EnumType.ORDINAL)
     @Column(name = "userRole")
@@ -45,13 +55,7 @@ public class User {
         ADMIN;
     }*/
 
-   /* public List<Order> getOrders() {
-        return orders;
-    }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }*/
 
     public long getIduser() {
         return iduser;
