@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`order` (
   `user_iduser` INT NOT NULL,
   `book_idbook` INT NOT NULL,
   `description` VARCHAR(100) NOT NULL,
+  `datetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idorder`),
   INDEX `fk_user_has_book_book1_idx` (`book_idbook` ASC),
   INDEX `fk_user_has_book_user_idx` (`user_iduser` ASC),
