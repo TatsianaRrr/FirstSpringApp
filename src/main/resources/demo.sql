@@ -125,9 +125,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mydb`;
-INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`) VALUES (1, 1, 1, '1');
-INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`) VALUES (2, 1, 2, '1');
-INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`) VALUES (3, 2, 1, '1');
+INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`, `datetime`) VALUES (1, 1, 1, '1','2020-09-29T13:43:35.000+00:00');
+INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`, `datetime`) VALUES (2, 1, 2, '1','2020-09-28T13:43:35.000+00:00');
+INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`, `datetime`) VALUES (3, 2, 1, '1','2020-09-27T13:43:35.000+00:00');
 
 COMMIT;
 
