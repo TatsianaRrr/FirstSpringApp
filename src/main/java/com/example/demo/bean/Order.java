@@ -3,6 +3,7 @@ package com.example.demo.bean;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -24,5 +25,8 @@ public class Order {
 
     @Column
     private String description;
+
+    @Column
+    private Date datetime;
 
 }
