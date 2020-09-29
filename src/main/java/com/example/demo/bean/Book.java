@@ -21,8 +21,8 @@ public class Book {
     @Column(name = "author")
     private String author;
 
-   @Column(name = "publishingHouse")
-    private String publishingHouse;
+  /* @Column(name = "publishingHouse")
+    private String publishingHouse;*/
 
     @Column(name = "year")
     private int year;
@@ -36,14 +36,14 @@ public class Book {
     @Column(name = "isbn")
     private long isbn;
 
-    @Column(name = "countOgPages")
-    private Integer countOfPages;
+  /*  @Column(name = "countOgPages")
+    private Integer countOfPages;*/
 
     @Column(name = "language")
     private String language;
 
-    @Column(name = "authorOfTranslation")
-    private String authorOfTranslation;
+   /* @Column(name = "authorOfTranslation")
+    private String authorOfTranslation;*/
 
     @Column(name = "description")
     private String description;
