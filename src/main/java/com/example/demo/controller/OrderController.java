@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,11 @@ public class OrderController {
     public List<Order> saveAll(List<Order> list) {
         orderService.saveAll(list);
         return list;
+    }
+
+    @GetMapping("/data")
+    public List<Order> findBetweenDates(Date d, Date date) {
+        return orderService.findBetweenDates(d, date);
     }
 
     @GetMapping("/{idOrder}")

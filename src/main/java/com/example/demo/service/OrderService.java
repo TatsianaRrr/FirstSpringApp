@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.bean.Book;
 import com.example.demo.bean.Order;
+import com.example.demo.bean.User;
 import com.example.demo.dao.OrderDaoI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +49,9 @@ public class OrderService {
         orderDaoI.findAll().forEach(list::add);
         return list;
     }
-
+    public List<Order> findBetweenDates(Date d, Date date) {
+        return orderDaoI.findBetweenDates(d, date);
+    }
     public List<Order> findAllById(List<Long> list) {
         List<Order> results = new ArrayList<>();
         list.forEach(id -> findById(id).ifPresent(results::add));

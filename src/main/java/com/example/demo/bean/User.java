@@ -25,6 +25,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    public void setIduser(int toIntExact) {
+    }
+
    /* @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL,
