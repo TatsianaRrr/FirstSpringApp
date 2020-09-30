@@ -49,8 +49,8 @@ public class OrderService {
         orderDaoI.findAll().forEach(list::add);
         return list;
     }
-    public List<Order> findBetweenDates(Date d, Date date) {
-        return orderDaoI.findBetweenDates(d, date);
+    public List<Order> findBetweenDates(Date from, Date to) {
+        return orderDaoI.findBetweenDates(from, to);
     }
     public List<Order> findAllById(List<Long> list) {
         List<Order> results = new ArrayList<>();

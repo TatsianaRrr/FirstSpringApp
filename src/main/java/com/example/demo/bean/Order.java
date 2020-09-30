@@ -26,7 +26,8 @@ public class Order {
     @Column
     private String description;
 
-    @Column
+    @Column(name="date_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date datetime;
 
 }

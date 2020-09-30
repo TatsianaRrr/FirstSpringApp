@@ -5,6 +5,7 @@ import com.example.demo.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,9 +36,9 @@ public class OrderController {
         return list;
     }
 
-    @GetMapping("/data")
-    public List<Order> findBetweenDates(Date d, Date date) {
-        return orderService.findBetweenDates(d, date);
+    @GetMapping("/date")
+    public List<Order> findBetweenDates(@RequestParam ("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date from, @RequestParam ("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date to ) {
+        return orderService.findBetweenDates(from, to);
     }
 
     @GetMapping("/{idOrder}")

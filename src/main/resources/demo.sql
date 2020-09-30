@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`order` (
   `user_iduser` INT NOT NULL,
   `book_idbook` INT NOT NULL,
   `description` VARCHAR(100) NOT NULL,
-  `datetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `date_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idorder`),
   INDEX `fk_user_has_book_book1_idx` (`book_idbook` ASC),
   INDEX `fk_user_has_book_user_idx` (`user_iduser` ASC),
@@ -125,9 +125,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mydb`;
-INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`) VALUES (1, 1, 1, '1');
-INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`) VALUES (2, 1, 2, '1');
-INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`) VALUES (3, 2, 1, '1');
+INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`, `date_time`) VALUES (1, 1, 1, '1','2020-09-29T13:43:35.000+00:00');
+INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`, `date_time`) VALUES (2, 1, 2, '1','2020-09-28T13:43:35.000+00:00');
+INSERT INTO `mydb`.`order` (`idorder`, `user_iduser`, `book_idbook`, `description`, `date_time`) VALUES (3, 2, 1, '1','2020-09-27T13:43:35.000+00:00');
 
 COMMIT;
 
