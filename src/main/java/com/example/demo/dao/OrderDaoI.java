@@ -15,6 +15,6 @@ public interface OrderDaoI extends CrudRepository<Order, Long> {
     List<Order> findByDescription(String description);
 
     @Query(value = "SELECT * FROM order s WHERE s.datetime BETWEEN :from AND :to", nativeQuery = true)
-    List<Order> findBetweenDates(Date from, Date to);
+    List<Order> findBetweenDates(Date from, Date to);//
 }
 
