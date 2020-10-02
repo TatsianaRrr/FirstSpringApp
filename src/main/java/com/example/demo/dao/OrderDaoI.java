@@ -15,7 +15,7 @@ import java.util.List;
 public interface OrderDaoI extends CrudRepository<Order, Long> {
     List<Order> findByDescription(String description);
 
-    @Query(value = "SELECT * FROM order o where o.date_time between :from AND :to", nativeQuery = true)
+    @Query(value = "SELECT * FROM `order` o where o.date_time between :from AND :to", nativeQuery = true)
     List<Order> findBetweenDates(@Param("from") Date from, @Param("to") Date to);
 }
 
